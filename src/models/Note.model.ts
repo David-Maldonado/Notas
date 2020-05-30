@@ -1,4 +1,5 @@
 import {Schema, model, Document} from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate';
 
 const noteSchema = new Schema({
 
@@ -11,4 +12,6 @@ interface INote extends Document{
     description: string;
 }
 
+noteSchema.plugin(mongoosePaginate);
 export default model<INote>('Note', noteSchema);
+

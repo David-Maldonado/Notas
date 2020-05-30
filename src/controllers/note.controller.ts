@@ -4,7 +4,8 @@ import Note from '../models/Note.model';
 
 export async function getNotes(req: Request, res: Response): Promise<Response>{
 
-    const notes = await Note.find();
+    const { page = 1 } = req.query;
+    const notes = await Note.paginate({}, {page, limit:10});
 
     return res.json(notes);
 } 
